@@ -9,8 +9,8 @@ function monitor() {
 	for(let host of HOST_LIST.T73) {
 		const opt = {
 			host: host,
-			user: 'kei',
-			password: 'keiuser',
+			user: '',
+			password: '',
 		};
 		mtdw.monitor(opt, cmd);
 	}
