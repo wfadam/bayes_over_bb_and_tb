@@ -1,6 +1,7 @@
 const mtdw = require('./latestMTDW.js');
 
-const cmd = `find /home/kei/datalog/MTDataWriter/ -mtime -30  -name "*.1st"; exit`;
+const cmd = `find /home/kei/datalog/MTDataWriter/ -mtime -7  -name "*.1st"; exit`;  // search files modified in the last X days
+//const cmd = `cd /home/kei/datalog/MTDataWriter/; touch -t 201612010000 start; touch -t 201612310000 stop; find /home/kei/datalog/MTDataWriter/ -newer start \! -newer stop -name "*.1st"; exit`;
 const HOST_LIST = require('./list_of_host.js');
 
 function monitor() {
@@ -9,8 +10,8 @@ function monitor() {
 	for(let host of HOST_LIST.T73) {
 		const opt = {
 			host: host,
-			user: '',
-			password: '',
+			user: 'kei',
+			password: 'keiuser',
 		};
 		mtdw.monitor(opt, cmd);
 	}
